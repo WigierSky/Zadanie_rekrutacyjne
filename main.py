@@ -5,16 +5,10 @@ from  fastapi import FastAPI
 app = FastAPI()
 
 #otwarcie pliku tekstowego
-file = open("plik.txt")
-text = ""
-
-#zczytanie danych z pliku tekstowego i zapisanie ich
-for file_x in file.readlines():
-    text += " " + file_x.strip()
+with open("plik.txt") as f:
+    file = f.read()
 
 #stworzenie scieżki dla operacji
 @app.get("/data")
-
-#definicja funkcji operacji zwracającą tekst z pliku
 def root():
-     return{"Informacja z pliku": text}
+     return{"Informacja z pliku": file}
