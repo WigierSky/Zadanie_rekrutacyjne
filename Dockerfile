@@ -1,15 +1,18 @@
-#syntax=docker/dockerfile:1
-
 #używamy bazowego obrazu Pythona
 FROM python:latest
 
-WORKDIR /REPO
+#stworzenie folderu roboczego aplikacji
+WORKDIR /src
 
-COPY ./requirements.txt /REPO/requirements.txt
+#skopiowanie pliku requirements.txt do folderu roboczego
+COPY ./requirements.txt /src/requirements.txt
 
-RUN pip3 install --upgrade -r /REPO/requirements.txt
+#instalowanie pakietów z pliku requirements.txt
+RUN pip3 install --upgrade -r /src/requirements.txt
 
+#otwarcie portu (aplikacja webowa)
 EXPOSE 80
 
-CMD ["uvicorn", "--host=0.0.0.0"]
+#parametry
+CMD ["python", "main.py"]
 
