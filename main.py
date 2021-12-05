@@ -5,7 +5,7 @@ from  fastapi import FastAPI
 app = FastAPI()
 
 #otwarcie pliku tekstowego i odczytanie danych
-with open("plik.txt") as f:
+with open("file.txt") as f:
     file = f.read()
 
 #stworzenie dekoratora oraz funkcji
